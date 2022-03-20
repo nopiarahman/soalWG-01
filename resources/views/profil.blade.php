@@ -11,10 +11,9 @@
                         @php
                             $namaDepan = 'Budi';
                             $namaBelakang = 'Hartono';
-                            $tahunLahir = 1993;
                             $tinggiBadan = 175;
                             $beratBadan = 60;
-                            $bekerja = false;
+                            $bekerja = 'Belum Bekerja';
                             $hobi = ['Berenang', 'Membaca', 'Belajar'];
                             function bmi($tinggiBadan, $beratBadan)
                             {
@@ -67,6 +66,10 @@
                                     <td>: {{ $beratBadan }} kg</td>
                                 </tr>
                                 <tr>
+                                    <td>Status Pekerjaan</td>
+                                    <td>: {{ $bekerja }}</td>
+                                </tr>
+                                <tr>
                                     <td>BMI</td>
                                     <td>: {{ bmi($tinggiBadan, $beratBadan) }}</td>
                                 </tr>
@@ -85,21 +88,20 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Umur</td>
-                                    <td>: {{ $umur->hitungUmur() }} tahun</td>
-                                </tr>
-                                <tr>
-                                <tr>
                                     <td>Hobi</td>
                                     <td>: {{ $hobi[1] }}</td>
                                 </tr>
                                 <tr>
+                                    <td>Umur</td>
+                                    <td>: {{ $umur->hitungUmur() }} tahun</td>
+                                </tr>
+                                <tr>
                                     <td>Lolos UJK</td>
                                     <td>:
-                                        @if ($umur->apakahDewasa() === true && $bekerja === false)
-                                            Anda bisa mendapatkan Beasiswa Uji Kompetensi
+                                        @if ($umur->apakahDewasa() === true && bmi($tinggiBadan, $beratBadan) > 30)
+                                            Anda bisa mendapatkan Konsultasi gratis.
                                         @else
-                                            Anda dapat mengikuti Uji Kompetensi secara Reguler
+                                            Anda mendapatkan diskon pada konsultasi kedua.
                                         @endif
                                     </td>
                                 </tr>
